@@ -24,6 +24,7 @@ struct EtiquetteView: View {
                             }
                     }
                 }
+                .padding(.top, 16)
             }
             .navigationTitle("에티켓사전")
             .navigationBarTitleDisplayMode(.large)
