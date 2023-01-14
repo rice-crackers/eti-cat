@@ -36,6 +36,7 @@ public enum EticatAsset {
   public static let eMail = EticatImages(name: "E-mail")
   public static let heartCat = EticatImages(name: "HeartCat")
   public static let identificationCard = EticatImages(name: "IdentificationCard")
+  public static let lock = EticatImages(name: "Lock")
   public static let spoon = EticatImages(name: "Spoon")
   public static let telephone = EticatImages(name: "Telephone")
   public static let wavingHand = EticatImages(name: "WavingHand")
