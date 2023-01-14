@@ -14,7 +14,7 @@ struct MainTabView: View {
                     }
                 }
 
-            Text("단계별풀이")
+            SolutionByStepView()
                 .tabItem {
                     VStack {
                         EticatAsset.solve.swiftUIImage
