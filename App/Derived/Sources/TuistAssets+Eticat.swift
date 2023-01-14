@@ -21,6 +21,17 @@
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum EticatAsset {
   public static let accentColor = EticatColors(name: "AccentColor")
+  public static let n10 = EticatColors(name: "N10")
+  public static let n20 = EticatColors(name: "N20")
+  public static let n30 = EticatColors(name: "N30")
+  public static let n40 = EticatColors(name: "N40")
+  public static let n50 = EticatColors(name: "N50")
+  public static let p1 = EticatColors(name: "P1")
+  public static let p2 = EticatColors(name: "P2")
+  public static let p3 = EticatColors(name: "P3")
+  public static let s20 = EticatColors(name: "S20")
+  public static let s40 = EticatColors(name: "S40")
+  public static let s60 = EticatColors(name: "S60")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
