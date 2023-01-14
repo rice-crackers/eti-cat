@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>593579685247-ekqnfulfb5dnjot7ktcdhl7816crpjv6.apps.googleusercontent.com</string>
+	<string>593579685247-4a2pufda2c6i4p17oe8vnjln9o444rmv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.593579685247-ekqnfulfb5dnjot7ktcdhl7816crpjv6</string>
+	<string>com.googleusercontent.apps.593579685247-4a2pufda2c6i4p17oe8vnjln9o444rmv</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBmw_5BZtrnixAucOJldO__cmRovUMgquE</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.rice.eticat</string>
+	<string>com.rice.Eticat</string>
 	<key>PROJECT_ID</key>
 	<string>rice-9ccdf</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:593579685247:ios:3b1890ca4d6a2dd00bd64a</string>
+	<string>1:593579685247:ios:6acb3cbf011bdd5f0bd64a</string>
 </dict>
 </plist>
