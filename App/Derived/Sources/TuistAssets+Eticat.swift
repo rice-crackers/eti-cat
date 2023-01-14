@@ -28,7 +28,7 @@ public enum EticatAsset {
   public static let n40 = EticatColors(name: "N40")
   public static let n50 = EticatColors(name: "N50")
   public static let white = EticatColors(name: "White")
-  public static let etikett = EticatImages(name: "etikett")
+  public static let etiquette = EticatImages(name: "etiquette")
   public static let person = EticatImages(name: "person")
   public static let solve = EticatImages(name: "solve")
   public static let p1 = EticatColors(name: "P1")

@@ -4,10 +4,10 @@ struct MainTabView: View {
     @State var tabSelection = 0
     var body: some View {
         TabView(selection: $tabSelection) {
-            Text("에티켓")
+            EtiquetteView()
                 .tabItem {
                     VStack {
-                        EticatAsset.etikett.swiftUIImage
+                        EticatAsset.etiquette.swiftUIImage
                             .renderingMode(.template)
 
                         Text("에티켓사전")
