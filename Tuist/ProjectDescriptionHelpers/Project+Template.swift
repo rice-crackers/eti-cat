@@ -12,8 +12,8 @@ public extension Project {
         entitlements: Path? = nil,
         infoPlist: InfoPlist = .default
     ) -> Project {
-        let organizationName = "org.Moddle"
-        let deploymentTarget = DeploymentTarget.iOS(targetVersion: "15.0", devices: [.iphone, .ipad])
+        let organizationName = "com.rice"
+        let deploymentTarget = DeploymentTarget.iOS(targetVersion: "16.0", devices: [.iphone, .ipad])
         
         let settings: Settings = .settings(
             base: [:],
@@ -26,7 +26,7 @@ public extension Project {
             name: name,
             platform: platform,
             product: product,
-            bundleId: "\(organizationName).\(name).app",
+            bundleId: "\(organizationName).\(name)",
             deploymentTarget: deploymentTarget,
             infoPlist: infoPlist,
             sources: sources,
