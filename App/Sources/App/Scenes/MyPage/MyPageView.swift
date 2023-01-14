@@ -88,10 +88,7 @@ struct MyPageView: View {
     }
 
     func onAppear() async throws {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let doc = try await Firestore.firestore().collection("user").document(uid).getDocument()
-        let item = doc.data()?["level"] as? Int ?? 1
-        level = item
+        
     }
 }
 

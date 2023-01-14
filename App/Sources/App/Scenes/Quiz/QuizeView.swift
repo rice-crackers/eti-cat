@@ -3,6 +3,7 @@ import SwiftUI
 struct QuizeView: View {
     @Environment(\.presentations) var presentations
     @State var isPresentedFailed = false
+    @AppStorage("LEVEL", store: .standard) var level = 1
     @State var isSuccess = false
     var body: some View {
         TabView {
@@ -36,6 +37,7 @@ struct QuizeView: View {
                 .ignoresSafeArea()
                 .onTapGesture {
                     isSuccess = false
+                    level += 1
                     presentations.forEach {
                         $0.wrappedValue = false
                     }

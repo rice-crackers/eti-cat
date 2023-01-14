@@ -5,6 +5,6 @@ final class AppState: ObservableObject {
     @Published var sceneFlow = SceneState.login
 
     init() {
-        sceneFlow = .main
+        sceneFlow = .login
     }
 }
