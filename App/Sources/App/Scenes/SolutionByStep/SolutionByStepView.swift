@@ -3,6 +3,7 @@ import NukeUI
 import MarkdownUI
 
 struct SolutionByStepView: View {
+    @Environment(\.presentations) var presentations
     @StateObject var viewModel = SolutionByStepViewModel()
     @AppStorage("LEVEL", store: .standard) var level = 1
     
@@ -10,6 +11,7 @@ struct SolutionByStepView: View {
     @State private var currentItem: SolutionEntity?
     @State private var isDetailShow: Bool = false
     @State var loadingMarkdown = false
+    @State var isQuizShow = false
     
     var body: some View {
         NavigationStack {
@@ -26,7 +28,7 @@ struct SolutionByStepView: View {
                                 .fullScreenCover(isPresented: $isDetailShow) {
                                     if let currentItem, isDetailShow {
                                         detailView(solution: currentItem)
-                                            .environment(\.presentations, $isDetailShow)
+                                            .environment(\.presentations, presentations + [$isDetailShow])
                                     }
                                 }
                         }
@@ -147,7 +149,7 @@ struct SolutionByStepView: View {
             ZStack {
                 Rectangle().fill(EticatAsset.n50.swiftUIColor).frame(height: 108)
                 Button {
-                    // ADD!
+                    isQuizShow = true
                 } label: {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(EticatAsset.p2.swiftUIColor)
@@ -163,6 +165,11 @@ struct SolutionByStepView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             .edgesIgnoringSafeArea(.bottom)
+        }
+        .fullScreenCover(isPresented: $isQuizShow) {
+            QuizeView()
+                .ignoresSafeArea()
+                .environment(\.presentations, presentations + [$isQuizShow])
         }
     }
 }
