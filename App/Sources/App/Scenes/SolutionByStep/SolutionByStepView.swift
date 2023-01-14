@@ -25,7 +25,7 @@ struct SolutionByStepView: View {
     func solutionByStepRowView(solution: SolutionEntity) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Level \(solution.level)")
-                .font(.custom(EticatFontFamily.Suite.bold.name, size: 16))
+                .font(.custom(EticatFontFamily.Suit.bold.name, size: 16))
                 .padding(.bottom, 8)
             
             AsyncImage(
@@ -57,9 +57,9 @@ struct SolutionByStepView: View {
         .overlay(alignment: .bottomLeading) {
             VStack(alignment: .leading, spacing: 6) {
                 Text(solution.title)
-                    .font(.custom(EticatFontFamily.Suite.bold.name, size: 20))
+                    .font(.custom(EticatFontFamily.Suit.bold.name, size: 20))
                 Text(solution.description)
-                    .font(.custom(EticatFontFamily.Suite.medium.name, size: 14))
+                    .font(.custom(EticatFontFamily.Suit.medium.name, size: 14))
             }
             .padding(20)
         }

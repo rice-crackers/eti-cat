@@ -29,7 +29,7 @@ struct EtiquetteView: View {
             .overlay(alignment: .topLeading) {
                 Text(etiquette.name)
                     .padding(16)
-                    .font(.custom(EticatFontFamily.Suite.bold.name, size: 20))
+                    .font(.custom(EticatFontFamily.Suit.bold.name, size: 20))
             }
             .overlay(alignment: .bottomTrailing) {
                 Image(etiquette.imageName)
