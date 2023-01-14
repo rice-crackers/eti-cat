@@ -8,11 +8,13 @@ struct EtiquetteView: View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 9) {
-                    ForEach(viewModel.etiquetteList, id: \.name) { etiquette in
+                    ForEach(viewModel.etiquetteList, id: \.id) { etiquette in
                         etiqutteRowView(etiquette: etiquette)
                     }
                 }
                 .padding(.top, 16)
+                .animation(.easeIn, value: viewModel.isLoaded)
+                .transition(.opacity)
             }
             .navigationTitle("에티켓사전")
             .navigationBarTitleDisplayMode(.large)
@@ -35,6 +37,7 @@ struct EtiquetteView: View {
                     .renderingMode(.original)
                     .padding(16)
             }
+            .redacted(reason: viewModel.isLoaded ? [] : .placeholder)
     }
 }
 
