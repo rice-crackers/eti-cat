@@ -24,9 +24,9 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SUITE-Bold.otf</string>
-		<string>SUITE-Medium.otf</string>
-		<string>SUITE-Regular.otf</string>
+		<string>SUIT-SemiBold.otf</string>
+		<string>SUIT-Bold.otf</string>
+		<string>SUIT-Medium.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
