@@ -143,6 +143,27 @@ struct SolutionByStepView: View {
                     withAnimation { isDetailShow = false }
                 }
         }
+        .overlay {
+            ZStack {
+                Rectangle().fill(EticatAsset.n50.swiftUIColor).frame(height: 108)
+                Button {
+                    // ADD!
+                } label: {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(EticatAsset.p2.swiftUIColor)
+                        .frame(height: 52)
+                        .padding(.horizontal, 20)
+                        .overlay(alignment: .center) {
+                            Text("문제풀이")
+                                .font(.custom(EticatFontFamily.Suit.bold.name, size: 14))
+                                .foregroundColor(EticatAsset.dark.swiftUIColor)
+                        }
+                        .opacity(loadingMarkdown ? 1 : 0)
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            .edgesIgnoringSafeArea(.bottom)
+        }
     }
 }
 
