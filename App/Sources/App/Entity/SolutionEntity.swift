@@ -8,5 +8,4 @@ struct SolutionEntity: Equatable {
     let description: String
     let imageName: String
     let content: String
-    let isLocked: Bool
 }
