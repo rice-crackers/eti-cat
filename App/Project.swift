@@ -11,8 +11,7 @@ let project = Project.makeModule(
         .SPM.FirebaseAuth,
         .SPM.FirebaseFirestore,
         .SPM.FirebaseFirestoreSwift,
-        .SPM.FirebaseStorage,
-        .SPM.SkeletonUI
+        .SPM.FirebaseStorage
     ],
     resources: ["Resources/**"],
     entitlements: Path("Support/Rice.entitlements"),
