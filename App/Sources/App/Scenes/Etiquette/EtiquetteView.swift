@@ -13,8 +13,6 @@ struct EtiquetteView: View {
                     }
                 }
                 .padding(.top, 16)
-                .animation(.easeIn, value: viewModel.isLoaded)
-                .transition(.opacity)
             }
             .navigationTitle("에티켓사전")
             .navigationBarTitleDisplayMode(.large)
