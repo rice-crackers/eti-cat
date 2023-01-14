@@ -21,11 +21,16 @@
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum EticatAsset {
   public static let accentColor = EticatColors(name: "AccentColor")
+  public static let dark = EticatColors(name: "Dark")
   public static let n10 = EticatColors(name: "N10")
   public static let n20 = EticatColors(name: "N20")
   public static let n30 = EticatColors(name: "N30")
   public static let n40 = EticatColors(name: "N40")
   public static let n50 = EticatColors(name: "N50")
+  public static let white = EticatColors(name: "White")
+  public static let etikett = EticatImages(name: "etikett")
+  public static let person = EticatImages(name: "person")
+  public static let solve = EticatImages(name: "solve")
   public static let p1 = EticatColors(name: "P1")
   public static let p2 = EticatColors(name: "P2")
   public static let p3 = EticatColors(name: "P3")
@@ -86,6 +91,73 @@ public extension SwiftUI.Color {
   init(asset: EticatColors) {
     let bundle = EticatResources.bundle
     self.init(asset.name, bundle: bundle)
+  }
+}
+#endif
+
+public struct EticatImages {
+  public fileprivate(set) var name: String
+
+  #if os(macOS)
+  public typealias Image = NSImage
+  #elseif os(iOS) || os(tvOS) || os(watchOS)
+  public typealias Image = UIImage
+  #endif
+
+  public var image: Image {
+    let bundle = EticatResources.bundle
+    #if os(iOS) || os(tvOS)
+    let image = Image(named: name, in: bundle, compatibleWith: nil)
+    #elseif os(macOS)
+    let image = bundle.image(forResource: NSImage.Name(name))
+    #elseif os(watchOS)
+    let image = Image(named: name)
+    #endif
+    guard let result = image else {
+      fatalError("Unable to load image asset named \(name).")
+    }
+    return result
+  }
+
+  #if canImport(SwiftUI)
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public var swiftUIImage: SwiftUI.Image {
+    SwiftUI.Image(asset: self)
+  }
+  #endif
+}
+
+public extension EticatImages.Image {
+  @available(macOS, deprecated,
+    message: "This initializer is unsafe on macOS, please use the EticatImages.image property")
+  convenience init?(asset: EticatImages) {
+    #if os(iOS) || os(tvOS)
+    let bundle = EticatResources.bundle
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
+    #elseif os(macOS)
+    self.init(named: NSImage.Name(asset.name))
+    #elseif os(watchOS)
+    self.init(named: asset.name)
+    #endif
+  }
+}
+
+#if canImport(SwiftUI)
+@available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+public extension SwiftUI.Image {
+  init(asset: EticatImages) {
+    let bundle = EticatResources.bundle
+    self.init(asset.name, bundle: bundle)
+  }
+
+  init(asset: EticatImages, label: Text) {
+    let bundle = EticatResources.bundle
+    self.init(asset.name, bundle: bundle, label: label)
+  }
+
+  init(decorative asset: EticatImages) {
+    let bundle = EticatResources.bundle
+    self.init(decorative: asset.name, bundle: bundle)
   }
 }
 #endif

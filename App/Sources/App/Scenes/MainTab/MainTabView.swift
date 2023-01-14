@@ -1,16 +1,40 @@
-//
-//  MainTabView.swift
-//  Eticat
-//
-//  Created by 최형우 on 2023/01/14.
-//  Copyright © 2023 com.rice. All rights reserved.
-//
-
 import SwiftUI
 
 struct MainTabView: View {
+    @State var tabSelection = 0
     var body: some View {
-        Text("Hello, World!")
+        TabView(selection: $tabSelection) {
+            Text("에티켓")
+                .tabItem {
+                    VStack {
+                        EticatAsset.etikett.swiftUIImage
+                            .renderingMode(.template)
+
+                        Text("에티켓사전")
+                    }
+                }
+
+            Text("단계별풀이")
+                .tabItem {
+                    VStack {
+                        EticatAsset.solve.swiftUIImage
+                            .renderingMode(.template)
+
+                        Text("단계별풀이")
+                    }
+                }
+
+            Text("마이")
+                .tabItem {
+                    VStack {
+                        EticatAsset.person.swiftUIImage
+                            .renderingMode(.template)
+
+                        Text("마이")
+                    }
+                }
+        }
+        .tint(EticatAsset.white.swiftUIColor)
     }
 }
 
