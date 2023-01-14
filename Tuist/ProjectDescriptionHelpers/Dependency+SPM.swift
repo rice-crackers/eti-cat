@@ -9,6 +9,8 @@ public extension TargetDependency.SPM {
     static let FirebaseFirestore = TargetDependency.package(product: "FirebaseFirestore")
     static let FirebaseFirestoreSwift = TargetDependency.package(product: "FirebaseFirestoreSwift")
     static let FirebaseStorage = TargetDependency.package(product: "FirebaseStorage")
+    static let StepperView = TargetDependency.external(name: "StepperView")
+    static let NukeUI = TargetDependency.external(name: "NukeUI")
 }
 
 public extension Package {
