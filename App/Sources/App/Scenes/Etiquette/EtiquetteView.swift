@@ -1,27 +1,25 @@
 import SwiftUI
 
 struct EtiquetteView: View {
+    @StateObject var viewModel = EtiquetteViewModel()
     let columns = Array(repeating: GridItem(.flexible()), count: 2)
-    let data = [
-        "메일",
-        "회의",
-        "명함",
-        "인사",
-        "운전",
-        "전화",
-        "흡연",
-        "식사"
-    ]
+
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 9) {
-                    ForEach(data, id: \.self) { item in
+                    ForEach(viewModel.etiquetteList, id: \.name) { etiquette in
                         RoundedRectangle(cornerRadius: 24)
                             .fill(EticatAsset.n30.swiftUIColor)
                             .aspectRatio(1, contentMode: .fit)
                             .overlay(alignment: .topLeading) {
-                                Text(item)
+                                Text(etiquette.name)
+                                    .padding(16)
+                                    .font(.custom(EticatFontFamily.Suite.bold.name, size: 20))
+                            }
+                            .overlay(alignment: .bottomTrailing) {
+                                Image(etiquette.imageName)
+                                    .renderingMode(.original)
                                     .padding(16)
                             }
                     }
