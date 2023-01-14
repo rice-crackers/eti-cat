@@ -4,6 +4,7 @@ import MarkdownUI
 
 struct SolutionByStepView: View {
     @StateObject var viewModel = SolutionByStepViewModel()
+    @AppStorage("LEVEL", store: .standard) var level = 1
     
     @Namespace private var animation
     @State private var currentItem: SolutionEntity?
@@ -33,6 +34,8 @@ struct SolutionByStepView: View {
                     .padding(.vertical, 16)
                 }
             }
+            .navigationTitle("단계별 풀이")
+            .navigationBarTitleDisplayMode(.large)
             .padding(.horizontal, isDetailShow ? 0 : 20)
             .background(EticatAsset.n50.swiftUIColor)
             .statusBarHidden(isDetailShow)
@@ -52,6 +55,17 @@ struct SolutionByStepView: View {
             )
             .frame(width: UIScreen.main.bounds.width - 40 , height: 264)
             .cornerRadius(25)
+            .blur(radius: level < solution.level ? 8 : 0)
+            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .overlay(alignment: .top) {
+                if level < solution.level {
+                    VStack(spacing: 4) {
+                        Image("Lock").resizable().frame(width: 56, height: 56)
+                        Text("잠겨있다냥").font(.custom(EticatFontFamily.Suit.bold.name, size: 20))
+                    }
+                    .padding(.top, 48)
+                }
+            }
         }
         .overlay(alignment: .bottom) {
             Rectangle()
