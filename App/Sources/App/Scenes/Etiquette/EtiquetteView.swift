@@ -105,3 +105,14 @@ struct EtiquetteView_Previews: PreviewProvider {
         EtiquetteView()
     }
 }
+
+struct PresentationKey: EnvironmentKey {
+    static let defaultValue: Binding<Bool> = .constant(false)
+}
+
+extension EnvironmentValues {
+    var presentations: Binding<Bool> {
+        get { return self[PresentationKey] }
+        set { self[PresentationKey] = newValue }
+    }
+}

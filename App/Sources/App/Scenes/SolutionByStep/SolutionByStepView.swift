@@ -26,9 +26,9 @@ struct SolutionByStepView: View {
                                 .fullScreenCover(isPresented: $isDetailShow) {
                                     if let currentItem, isDetailShow {
                                         detailView(solution: currentItem)
+                                            .environment(\.presentations, $isDetailShow)
                                     }
                                 }
-                            
                         }
                     }
                     .padding(.vertical, 16)
