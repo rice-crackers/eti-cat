@@ -14,8 +14,7 @@ final class SolutionByStepViewModel: ObservableObject {
                 title: "더미더미 더미",
                 description: "더미더미더미더미더미더미더미",
                 imageName: "",
-                content: "",
-                isLocked: false
+                content: ""
             )
         }
         
@@ -33,8 +32,7 @@ final class SolutionByStepViewModel: ObservableObject {
                     title: data["title"] as! String,
                     description: data["description"] as! String,
                     imageName: data["imageName"] as! String,
-                    content: data["content"] as! String,
-                    isLocked: data["isLocked"] as! Bool
+                    content: data["content"] as! String
                 )
             }
             DispatchQueue.main.async {

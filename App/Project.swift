@@ -5,7 +5,8 @@ let project = Project.makeModule(
     name: "Eticat",
     product: .app,
     packages: [
-        .Firebase
+        .Firebase,
+        .MarkdownUI
     ],
     dependencies: [
         .SPM.FirebaseAuth,
@@ -13,7 +14,8 @@ let project = Project.makeModule(
         .SPM.FirebaseFirestoreSwift,
         .SPM.FirebaseStorage,
         .SPM.NukeUI,
-        .SPM.StepperView
+        .SPM.StepperView,
+        .SPM.MarkdownUI
     ],
     resources: ["Resources/**"],
     entitlements: Path("Support/Rice.entitlements"),
