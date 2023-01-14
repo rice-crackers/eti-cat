@@ -2,7 +2,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.makeModule(
-    name: "Eticat",
+    name: "eticat",
     product: .app,
     packages: [
         .Firebase
