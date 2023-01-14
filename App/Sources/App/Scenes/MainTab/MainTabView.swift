@@ -24,7 +24,7 @@ struct MainTabView: View {
                     }
                 }
 
-            Text("마이")
+            MyPageView()
                 .tabItem {
                     VStack {
                         EticatAsset.person.swiftUIImage
