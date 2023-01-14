@@ -1,4 +1,6 @@
 import Combine
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 final class EtiquetteViewModel: ObservableObject {
     @Published var etiquetteList: [EtiquetteEntity] = [
@@ -13,6 +15,6 @@ final class EtiquetteViewModel: ObservableObject {
     ]
 
     init() {
-        
+        Firestore.firestore()
     }
 }

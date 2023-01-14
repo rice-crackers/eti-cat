@@ -9,19 +9,7 @@ struct EtiquetteView: View {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 9) {
                     ForEach(viewModel.etiquetteList, id: \.name) { etiquette in
-                        RoundedRectangle(cornerRadius: 24)
-                            .fill(EticatAsset.n30.swiftUIColor)
-                            .aspectRatio(1, contentMode: .fit)
-                            .overlay(alignment: .topLeading) {
-                                Text(etiquette.name)
-                                    .padding(16)
-                                    .font(.custom(EticatFontFamily.Suite.bold.name, size: 20))
-                            }
-                            .overlay(alignment: .bottomTrailing) {
-                                Image(etiquette.imageName)
-                                    .renderingMode(.original)
-                                    .padding(16)
-                            }
+                        etiqutteRowView(etiquette: etiquette)
                     }
                 }
                 .padding(.top, 16)
@@ -30,6 +18,23 @@ struct EtiquetteView: View {
             .navigationBarTitleDisplayMode(.large)
             .padding(.horizontal, 20)
         }
+    }
+
+    @ViewBuilder
+    func etiqutteRowView(etiquette: EtiquetteEntity) -> some View {
+        RoundedRectangle(cornerRadius: 24)
+            .fill(EticatAsset.n30.swiftUIColor)
+            .aspectRatio(1, contentMode: .fit)
+            .overlay(alignment: .topLeading) {
+                Text(etiquette.name)
+                    .padding(16)
+                    .font(.custom(EticatFontFamily.Suite.bold.name, size: 20))
+            }
+            .overlay(alignment: .bottomTrailing) {
+                Image(etiquette.imageName)
+                    .renderingMode(.original)
+                    .padding(16)
+            }
     }
 }
 
