@@ -20,10 +20,64 @@
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum EticatAsset {
+  public static let accentColor = EticatColors(name: "AccentColor")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 // MARK: - Implementation Details
+
+public final class EticatColors {
+  public fileprivate(set) var name: String
+
+  #if os(macOS)
+  public typealias Color = NSColor
+  #elseif os(iOS) || os(tvOS) || os(watchOS)
+  public typealias Color = UIColor
+  #endif
+
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
+  public private(set) lazy var color: Color = {
+    guard let color = Color(asset: self) else {
+      fatalError("Unable to load color asset named \(name).")
+    }
+    return color
+  }()
+
+  #if canImport(SwiftUI)
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public private(set) lazy var swiftUIColor: SwiftUI.Color = {
+    SwiftUI.Color(asset: self)
+  }()
+  #endif
+
+  fileprivate init(name: String) {
+    self.name = name
+  }
+}
+
+public extension EticatColors.Color {
+  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
+  convenience init?(asset: EticatColors) {
+    let bundle = EticatResources.bundle
+    #if os(iOS) || os(tvOS)
+    self.init(named: asset.name, in: bundle, compatibleWith: nil)
+    #elseif os(macOS)
+    self.init(named: NSColor.Name(asset.name), bundle: bundle)
+    #elseif os(watchOS)
+    self.init(named: asset.name)
+    #endif
+  }
+}
+
+#if canImport(SwiftUI)
+public extension SwiftUI.Color {
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  init(asset: EticatColors) {
+    let bundle = EticatResources.bundle
+    self.init(asset.name, bundle: bundle)
+  }
+}
+#endif
 
 // swiftlint:enable all
 // swiftformat:enable all
