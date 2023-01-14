@@ -2,6 +2,7 @@ import AuthenticationServices
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject var appState: AppState
     @StateObject var viewModel = LoginViewModel()
 
     var body: some View {
@@ -33,6 +34,11 @@ struct LoginView: View {
                 .frame(height: 50)
                 .padding(.horizontal, 20)
                 .padding(.bottom, 48)
+            }
+        }
+        .onChange(of: viewModel.isSuccessSignin) { newValue in
+            if newValue {
+                appState.sceneFlow = .main
             }
         }
     }

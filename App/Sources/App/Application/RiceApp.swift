@@ -4,15 +4,17 @@ import Firebase
 @main
 struct DodamDodamApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject var appState = AppState()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appState)
         }
     }
 }
 
 enum SceneState: String {
-    case intro
+    case login
     case main
 }
 

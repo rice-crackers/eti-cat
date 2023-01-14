@@ -5,6 +5,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class LoginViewModel: ObservableObject {
+    @Published var isSuccessSignin = false
     var nonce = ""
 
     func appleSigninCompleted(idData: Data) {
@@ -22,7 +23,7 @@ final class LoginViewModel: ObservableObject {
             if !snapshot.exists {
                 try await Firestore.firestore().collection("user").document(uuid).setData(["level": 1])
             }
-            print("ASD")
+            isSuccessSignin = true
         }
     }
 }
