@@ -24,7 +24,9 @@ final class LoginViewModel: ObservableObject {
                 if !snapshot.exists {
                     try await Firestore.firestore().collection("user").document(uuid).setData(["level": 1])
                 }
-                isSuccessSignin = true
+                DispatchQueue.main.async {
+                    self.isSuccessSignin = true
+                }
             } catch {
                 print(error.localizedDescription)
             }
