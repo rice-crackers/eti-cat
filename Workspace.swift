@@ -2,7 +2,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let workspace = Workspace(
-    name: "Rice",
+    name: "Eticat",
     projects: [
         "App"
     ]

@@ -8,14 +8,14 @@ import Foundation
 private class BundleFinder {}
 
 extension Foundation.Bundle {
-    /// Since Rice is a application, the bundle for classes within this module can be used directly.
+    /// Since Eticat is a application, the bundle for classes within this module can be used directly.
     static let module = Bundle(for: BundleFinder.self)
 }
 
 // MARK: - Objective-C Bundle Accessor
 
 @objc
-public class RiceResources: NSObject {
+public class EticatResources: NSObject {
     @objc public class var bundle: Bundle {
         return .module
     }
