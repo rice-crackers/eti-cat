@@ -16,13 +16,13 @@
 
 // swiftlint:disable identifier_name line_length type_body_length
 public enum EticatFontFamily {
-  public enum Suite {
-    public static let bold = EticatFontConvertible(name: "SUITE-Bold", family: "SUITE", path: "SUITE-Bold.otf")
-    public static let medium = EticatFontConvertible(name: "SUITE-Medium", family: "SUITE", path: "SUITE-Medium.otf")
-    public static let regular = EticatFontConvertible(name: "SUITE-Regular", family: "SUITE", path: "SUITE-Regular.otf")
-    public static let all: [EticatFontConvertible] = [bold, medium, regular]
+  public enum Suit {
+    public static let bold = EticatFontConvertible(name: "SUIT-Bold", family: "SUIT", path: "SUIT-Bold.otf")
+    public static let medium = EticatFontConvertible(name: "SUIT-Medium", family: "SUIT", path: "SUIT-Medium.otf")
+    public static let semiBold = EticatFontConvertible(name: "SUIT-SemiBold", family: "SUIT", path: "SUIT-SemiBold.otf")
+    public static let all: [EticatFontConvertible] = [bold, medium, semiBold]
   }
-  public static let allCustomFonts: [EticatFontConvertible] = [Suite.all].flatMap { $0 }
+  public static let allCustomFonts: [EticatFontConvertible] = [Suit.all].flatMap { $0 }
   public static func registerAllCustomFonts() {
     allCustomFonts.forEach { $0.register() }
   }

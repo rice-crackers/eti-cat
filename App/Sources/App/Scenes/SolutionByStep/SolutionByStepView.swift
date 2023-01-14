@@ -7,11 +7,12 @@ struct SolutionByStepView: View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 24) {
-                    ForEach(viewModel.solutionList, id: \.level) { solution in
+                    ForEach(viewModel.solutionList, id: \.id) { solution in
                         solutionByStepRowView(solution: solution)
+                            .transition(.opacity)
                     }
                 }
-                .padding(.top, 16)
+                .padding(.vertical, 16)
             }
             .navigationTitle("단계별 풀이")
             .navigationBarTitleDisplayMode(.large)
@@ -24,34 +25,41 @@ struct SolutionByStepView: View {
     func solutionByStepRowView(solution: SolutionEntity) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Level \(solution.level)")
-                .font(.custom(EticatFontFamily.Suite.bold.name, size: 16))
+                .font(.custom(EticatFontFamily.Suit.bold.name, size: 16))
                 .padding(.bottom, 8)
             
-            AsyncImage(url: URL(string: solution.bannerURL)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 264)
-                    .cornerRadius(26)
-                
-            } placeholder: {
-                Image("placeholder")
-                    .resizable()
-                    .frame(height: 264)
+            AsyncImage(
+                url: URL(string: solution.bannerURL),
+                transaction: Transaction(animation: .easeIn)
+            ) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width - 40 , height: 264)
+                        .aspectRatio(contentMode: .fill)
+                default:
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(EticatAsset.n40.swiftUIColor)
+                        .frame(height: 264)
+                }
             }
+            .unredacted()
+            .cornerRadius(25)
         }
         .overlay(alignment: .bottom) {
             Rectangle()
                 .fill(EticatAsset.n30.swiftUIColor)
                 .frame(height: 84)
-                .cornerRadius(24, corners: [.bottomLeft, .bottomRight])
+                .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
         }
         .overlay(alignment: .bottomLeading) {
             VStack(alignment: .leading, spacing: 6) {
                 Text(solution.title)
-                    .font(.custom(EticatFontFamily.Suite.bold.name, size: 20))
+                    .font(.custom(EticatFontFamily.Suit.bold.name, size: 20))
                 Text(solution.description)
-                    .font(.custom(EticatFontFamily.Suite.medium.name, size: 14))
+                    .font(.custom(EticatFontFamily.Suit.medium.name, size: 14))
             }
             .padding(20)
         }
@@ -68,6 +76,7 @@ struct SolutionByStepView: View {
                 .padding(.bottom, 52)
                 .padding(.trailing, 20)
         }
+        .redacted(reason: viewModel.isLoaded ? [] : .placeholder)
     }
 }
 

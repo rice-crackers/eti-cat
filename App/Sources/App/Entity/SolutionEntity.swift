@@ -1,6 +1,7 @@
 import Foundation
 
 struct SolutionEntity: Equatable {
+    let id: UUID = UUID()
     let level: Int
     let bannerURL: String
     let title: String

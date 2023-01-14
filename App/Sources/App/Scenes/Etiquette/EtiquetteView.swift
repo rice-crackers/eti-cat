@@ -12,11 +12,12 @@ struct EtiquetteView: View {
                         etiqutteRowView(etiquette: etiquette)
                     }
                 }
-                .padding(.top, 16)
+                .padding(.vertical, 16)
             }
             .navigationTitle("에티켓사전")
             .navigationBarTitleDisplayMode(.large)
             .padding(.horizontal, 20)
+            .background(EticatAsset.n50.swiftUIColor)
         }
     }
 
@@ -28,12 +29,14 @@ struct EtiquetteView: View {
             .overlay(alignment: .topLeading) {
                 Text(etiquette.name)
                     .padding(16)
-                    .font(.custom(EticatFontFamily.Suite.bold.name, size: 20))
+                    .font(.custom(EticatFontFamily.Suit.bold.name, size: 20))
             }
             .overlay(alignment: .bottomTrailing) {
                 Image(etiquette.imageName)
                     .renderingMode(.original)
                     .padding(16)
+                    .unredacted()
+                    .opacity(viewModel.isLoaded ? 1 : 0)
             }
             .redacted(reason: viewModel.isLoaded ? [] : .placeholder)
     }

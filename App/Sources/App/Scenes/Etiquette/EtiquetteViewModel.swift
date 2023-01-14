@@ -1,4 +1,4 @@
-import Combine
+import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -20,7 +20,8 @@ final class EtiquetteViewModel: ObservableObject {
             }
             DispatchQueue.main.async {
                 self.etiquetteList = etiqueList
-                self.isLoaded = true
+                
+                withAnimation { self.isLoaded = true }
             }
         }
     }
